@@ -1,18 +1,17 @@
 <?php
 
+use App\Http\Controllers\Controller;
 use Illuminate\Support\Facades\Route;
-
-/*
-|--------------------------------------------------------------------------
-| Web Routes
-|--------------------------------------------------------------------------
-|
-| Here is where you can register web routes for your application. These
-| routes are loaded by the RouteServiceProvider and all of them will
-| be assigned to the "web" middleware group. Make something great!
-|
-*/
+use App\Http\Controllers\login;
+use App\Http\Controllers\dasbord_user;
 
 Route::get('/', function () {
-    return view('welcome');
+    return view('index');
 });
+
+route::get('/login',[login::class,'Halaman_login']);
+
+
+route::post('/login', [login::class, 'processLogin'])->name('login.submit');
+
+route::get('dasbord_user',[dasbord_user::class,'halaman_dasbord_admin'])->name('dasboard_user');
