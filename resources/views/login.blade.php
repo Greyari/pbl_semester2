@@ -16,9 +16,6 @@
         <form action="{{ route('login.submit') }}" method="POST">
             @csrf 
             <h2>Login</h2>
-            @if(session('error'))
-                <div class="error">{{ session('error') }}</div>
-            @endif
             <div class="inputBox">
                 <input type="text" name="username" required="required">
                 <span>Username</span>
@@ -29,6 +26,10 @@
                 <span>Password</span>
                 <i></i>
                 <div class="fa-solid fa-eye mata"></div>
+            </div>
+            <div class="links">
+                <a href="{{'/forget'}}">Lupa Kata Sandi</a>
+                <a href="{{'/regis'}}">Daftar</a>
             </div>
             <input type="submit" value="Login">
         </form>
