@@ -48,4 +48,3 @@ Route::get('/edit-barang', [AdminController::class, 'editBarang'])->name('edit-b
 Route::get('/tambah-barang', [AdminController::class, 'tambahBarang'])->name('tambah');
 Route::get('/hapus-barang', [AdminController::class, 'hapusBarang'])->name('hapus-barang');
 Route::get('/update-barang', [AdminController::class, 'updateBarang'])->name('update_barang');
-

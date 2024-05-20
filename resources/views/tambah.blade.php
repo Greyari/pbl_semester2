@@ -1,96 +1,47 @@
 <!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Tambah Barang</title>
-    <style>
-        body {
-            font-family: Arial, sans-serif;
-            background-color: #f8f9fa;
-            color: #333;
-        }
-
-        .container {
-            max-width: 600px;
-            margin: 0 auto;
-            padding: 20px;
-            background-color: #fff;
-            border-radius: 8px;
-            box-shadow: 0 0 10px rgba(0,0,0,0.1);
-        }
-
-        h2 {
-            margin-top: 0;
-        }
-
-        label {
-            display: block;
-            margin-bottom: 5px;
-        }
-
-        input[type="text"], input[type="number"], input[type="file"] {
-            width: 100%;
-            padding: 8px;
-            margin-bottom: 15px;
-            border: 1px solid #ccc;
-            border-radius: 4px;
-            box-sizing: border-box;
-        }
-
-        .button-container {
-            text-align: right;
-        }
-
-        button {
-            padding: 10px 20px;
-            background-color: #007bff;
-            color: #fff;
-            border: none;
-            border-radius: 4px;
-            cursor: pointer;
-        }
-
-        button:hover {
-            background-color: #0056b3;
-        }
-
-        .notification {
-            margin-top: 10px;
-            padding: 10px;
-            background-color: #28a745;
-            color: #fff;
-            border-radius: 4px;
-            display: none;
-        }
-    </style>
-</head>
-<body>
-    <div class="container">
-        <h2>Tambah Barang</h2>
-        <form action="#" method="POST" enctype="multipart/form-data" id="form-tambah">
-            <label for="nama">Nama Barang:</label>
-            <input type="text" id="nama" name="nama" required>
-
-            <label for="merek">Merek:</label>
-            <input type="text" id="merek" name="merek" required>
-
-            <label for="harga">Harga:</label>
-            <input type="number" id="harga" name="harga" required>
-
-            <label for="stok">Jumlah Stok:</label>
-            <input type="number" id="stok" name="stok" required>
-
-            <label for="gambar">Gambar:</label>
-            <input type="file" id="gambar" name="gambar" accept="image/*" required>
-
-            <div class="button-container">
-                <button type="submit">Simpan</button>
+<html>
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link href="/style/tailwindcss3.4.1.js" rel="stylesheet" />
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link
+      rel="stylesheet"
+      href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.8.0/font/bootstrap-icons.css"
+    />
+    <title>Responsive Sidebar Using TailwindCSS</title>
+  </head>
+  <body class="bg-gray-100 h-screen flex items-center justify-center">
+    <div class="max-w-md w-full bg-white p-8 rounded-lg shadow-lg">
+        <h2 class="text-2xl mb-4">Tambah Barang</h2>
+        <form action="#" method="POST" enctype="multipart/form-data" id="form-tambah" class="space-y-4">
+            <div>
+                <label for="nama" class="block text-sm font-medium text-gray-700">Nama Barang:</label>
+                <input type="text" id="nama" name="nama" class="mt-1 p-2 block w-full border border-gray-300 rounded-md focus:outline-none focus:ring-blue-500 focus:border-blue-500" required>
+            </div>
+            <div>
+                <label for="merek" class="block text-sm font-medium text-gray-700">Merek:</label>
+                <input type="text" id="merek" name="merek" class="mt-1 p-2 block w-full border border-gray-300 rounded-md focus:outline-none focus:ring-blue-500 focus:border-blue-500" required>
+            </div>
+            <div>
+                <label for="harga" class="block text-sm font-medium text-gray-700">Harga:</label>
+                <input type="number" id="harga" name="harga" class="mt-1 p-2 block w-full border border-gray-300 rounded-md focus:outline-none focus:ring-blue-500 focus:border-blue-500" required>
+            </div>
+            <div>
+                <label for="stok" class="block text-sm font-medium text-gray-700">Jumlah Stok:</label>
+                <input type="number" id="stok" name="stok" class="mt-1 p-2 block w-full border border-gray-300 rounded-md focus:outline-none focus:ring-blue-500 focus:border-blue-500" required>
+            </div>
+            <div>
+                <label for="gambar" class="block text-sm font-medium text-gray-700">Gambar:</label>
+                <input type="file" id="gambar" name="gambar" accept="image/*" class="mt-1 p-2 block w-full border border-gray-300 rounded-md focus:outline-none focus:ring-blue-500 focus:border-blue-500" required>
+            </div>
+            <div class="flex justify-end">
+                <button type="submit" class="bg-blue-500 text-white px-4 py-2 rounded-md hover:bg-blue-600 focus:outline-none focus:ring-2 focus:ring-blue-500">Simpan</button>
             </div>
         </form>
-
-        <div class="notification" id="notif-sukses">Barang berhasil disimpan!</div>
     </div>
+
+    <div class="notification mt-4 bg-green-500 text-white px-4 py-2 rounded-md shadow-md" id="notif-sukses">Barang berhasil disimpan!</div>
 
     <script>
         document.addEventListener('DOMContentLoaded', function() {

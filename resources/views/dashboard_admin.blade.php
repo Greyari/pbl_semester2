@@ -1,229 +1,86 @@
 <!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Admin Dashboard</title>
-    <link rel="stylesheet" href="css/index.css" />
+<html>
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link href="/style/tailwindcss3.4.1.js" rel="stylesheet" />
+    <script src="https://cdn.tailwindcss.com"></script>
     <link
       rel="stylesheet"
-      href="https://unpkg.com/swiper/swiper-bundle.min.css"
+      href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.8.0/font/bootstrap-icons.css"
     />
-    <style>
-        /* Global Styles */
-        body, html {
-            margin: 0;
-            padding: 0;
-            font-family: Arial, sans-serif;
-            background-color: #f8f9fa;
-            color: #333;
-        }
-
-        .wrapper {
-            display: flex;
-            flex-direction: column;
-            min-height: 100vh;
-        }
-
-        /* Header Styles */
-        header {
-            background-color: #343a40;
-            color: #fff;
-            padding: 10px 20px;
-            box-shadow: 0 2px 4px rgba(0,0,0,0.1);
-        }
-
-        /* Navbar Styles */
-        .navbar {
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-        }
-
-        .navbar-logo {
-            height: 40px;
-            width: auto;
-        }
-
-        .navbar-menu ul {
-            list-style: none;
-            padding: 0;
-            margin: 0;
-            display: flex;
-        }
-
-        .navbar-menu li {
-            margin-right: 20px;
-        }
-
-        .navbar-menu li:last-child {
-            margin-right: 0;
-        }
-
-        .navbar-menu a {
-            color: #fff;
-            text-decoration: none;
-        }
-
-        /* Sidebar Styles */
-        aside {
-            background-color: #6c757d;
-            width: 200px;
-            padding: 20px;
-            box-shadow: 2px 0 4px rgba(0,0,0,0.1);
-        }
-
-        nav ul {
-            list-style: none;
-            padding: 0;
-        }
-
-        nav ul li {
-            margin-bottom: 10px;
-        }
-
-        nav ul li a {
-            color: #fff;
-            text-decoration: none;
-            transition: all 0.3s ease;
-            padding: 10px;
-            display: block;
-        }
-
-        nav ul li a:hover {
-            background-color: #495057;
-        }
-
-        /* Main Content Styles */
-        .main-content {
-            display: flex;
-            flex: 1;
-        }
-
-        .box-content{
-            padding:10px;
-        }
-
-        .content {
-            flex: 1;
-            padding: 3px;
-            background-color: #fff;
-            box-shadow: 0 2px 4px rgba(0,0,0,0.1);
-            border-radius: 4px;
-        }
-
-        .section {
-            background-color: #e9ecef;
-            border: 1px solid #ccc;
-            padding: 20px;
-            margin-bottom: 20px;
-            border-radius: 4px;
-            transition: all 0.3s ease;
-        }
-
-        .section:hover {
-            transform: translateY(-5px);
-            box-shadow: 0 2px 4px rgba(0,0,0,0.1);
-        }
-
-        /* Footer Styles */
-        footer {
-            background-color: #343a40;
-            color: #fff;
-            padding: 10px 20px;
-            margin-top: auto;
-            box-shadow: 0 -2px 4px rgba(0,0,0,0.1);
-        }
-
-        footer p {
-            margin: 0;
-        }
-    </style>
-</head>
-<body>
-    <div class="wrapper">
-        <header>
-            <div class="navbar">
-                <img src="path/to/logo.png" alt="Logo" class="navbar-logo">
-                <div class="navbar-menu">
-                    <ul>
-                        <li><a href="#">Dashboard</a></li>
-                        <li><a href="#">Tentang Kami</a></li>
-                        <li><a href="#">Log Out</a></li>
-                    </ul>
-                </div>
-            </div>
-        </header>
-
-        <div class="main-content">
-            <aside>
-                <nav>
-                    <ul class ="box-content" >
-                        <li><a href="/edit-barang">Edit Barang</a></li>
-                        <li><a href="/tambah-barang">Tambah Barang</a></li>
-                        <li><a href="/hapus-barang">Hapus Barang</a></li>
-                        <li><a href="/update-barang">Update Barang</a></li>
-                    </ul>
-                </nav>
-            </aside>
-
-            <div class="content">
-                <h2>Welcome to the Dashboard!</h2>
-                <p>lo asik bang,asik sendiri tapi</p>
-
-                <div class="section">
-                    <h3>Section 1</h3>
-                    <p>meranti</p>
-                </div>
-
-                <div class="section">
-                    <h3>Section 2</h3>
-                    <p>bolu</p>
-                </div>
-
-                <div class="section">
-                    <h3>Section 3</h3>
-                    <p>wahyu huhu asek</p>
-                </div>
-            </div>
-        </div>
-
-        <footer class="bg-black text-white p-8 mt-14">
-      <div
-        class="container mx-auto flex flex-col md:flex-row items-center justify-between"
-      >
-        <!-- Sosial Media -->
-        <div class="mb-4 md:mb-0">
-          <h3 class="text-xl font-bold mb-2">Sosial Media</h3>
-          <ul class="flex space-x-4">
-            <li>
-              <a href="#" class="text-white hover:text-gray-400">Facebook</a>
-            </li>
-            <li>
-              <a href="#" class="text-white hover:text-gray-400">Twitter</a>
-            </li>
-            <li>
-              <a href="#" class="text-white hover:text-gray-400">Instagram</a>
-            </li>
-          </ul>
-        </div>
-
-        <!-- Kontak -->
-        <div class="mb-4 md:mb-0">
-          <h3 class="text-xl font-bold mb-2">Kontak</h3>
-          <p>Email: info@example.com</p>
-          <p>Telepon: (123) 456-7890</p>
-        </div>
-
-        <!-- Alamat -->
-        <div>
-          <h3 class="text-xl font-bold mb-2">Alamat</h3>
-          <p>Jalan Contoh No. 123</p>
-          <p>Kota Contoh, 12345</p>
-          <p>Indonesia</p>
+    <title>Responsive Sidebar Using TailwindCSS</title>
+  </head>
+  <body class=" h-screen bg-white">
+    <!-- Navbar -->
+    <header class=" shadow py-4 px-6 flex justify-between items-center bg-gray-800">
+      <div class="flex items-center">
+        <img src="https://via.placeholder.com/40" class="w-10 h-10 rounded-full mr-4" alt="Logo">
+        <h1 class="text-2xl text-white font-extrabold ">Admin Dashboard</h1>
+      </div>
+      <div class="flex items-center space-x-4">
+        <a href="#" class="text-white hover:text-blue-500">Profile</a>
+        <a href="#" class="text-white hover:text-blue-500">Settings</a>
+        <button class="bg-blue-500 text-white px-4 py-2 rounded">Log Out</button>
+      </div>
+    </header>
+  
+    <div class="flex h-full">
+      <!-- Sidebar -->
+      <div class="w-64 bg-gray-800 text-white h-full p-4">
+        <ul>
+        
+          <li class="mb-4">
+            <a href="/tambah-barang" class="flex items-center p-2 hover:bg-blue-600 rounded">
+              <svg class="w-6 h-6 mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 4v16m8-8H4"></path></svg>
+              Menambahkan Barang
+            </a>
+          </li>
+          <li class="mb-4">
+            <a href="/edit-barang" class="flex items-center p-2 hover:bg-blue-600 rounded">
+              <svg class="w-6 h-6 mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 12H9m0 0H5m4 0h4m-4 0V8m0 4v4"></path></svg>
+              Edit Barang
+            </a>
+          </li>
+          <li class="mb-4">
+            <a href="/hapus-barang" class="flex items-center p-2 hover:bg-blue-600 rounded">
+              <svg class="w-6 h-6 mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M20 12H4"></path></svg>
+              Hapus Barang
+            </a>
+          </li>
+          <li class="mb-4">
+            <a href="/update-barang" class="flex items-center p-2 hover:bg-blue-600 rounded">
+              <svg class="w-6 h-6 mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 8c0-1.657 1.343-3 3-3s3 1.343 3 3-1.343 3-3 3-3-1.343-3-3zm0 4c2.761 0 5 2.239 5 5v4H7v-4c0-2.761 2.239-5 5-5z"></path></svg>
+              Stok
+            </a>
+          </li>
+        </ul>
+      </div>
+  
+      <!-- Main content -->
+      <div class="flex-1 p-6">
+        <!-- Content -->
+        <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+          <!-- Card 1 -->
+          <div class="bg-white p-4 rounded-lg shadow-md">
+            <h3 class="text-xl font-semibold mb-4">Total Users</h3>
+            <p class="text-2xl">1,234</p>
+          </div>
+  
+          <!-- Card 2 -->
+          <div class="bg-white p-4 rounded-lg shadow-md">
+            <h3 class="text-xl font-semibold mb-4">Total Sales</h3>
+            <p class="text-2xl">$12,345</p>
+          </div>
+  
+          <!-- Card 3 -->
+          <div class="bg-white p-4 rounded-lg shadow-md">
+            <h3 class="text-xl font-semibold mb-4">New Orders</h3>
+            <p class="text-2xl">567</p>
+          </div>
         </div>
       </div>
-    </footer>
     </div>
-</body>
+    
+  </body>
 </html>

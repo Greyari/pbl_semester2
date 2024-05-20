@@ -1,81 +1,42 @@
 <!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Edit Barang</title>
-    <style>
-        body {
-            font-family: Arial, sans-serif;
-            background-color: #f4f4f4;
-            margin: 0;
-            padding: 0;
-            box-sizing: border-box;
-        }
-
-        form {
-            max-width: 400px;
-            margin: 0 auto;
-            background-color: #fff;
-            padding: 20px;
-            border-radius: 5px;
-            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
-        }
-
-        label {
-            display: block;
-            margin-bottom: 10px;
-            font-weight: bold;
-        }
-
-        input[type="text"],
-        input[type="number"] {
-            width: calc(100% - 20px);
-            padding: 10px;
-            margin-bottom: 20px;
-            border: 1px solid #ccc;
-            border-radius: 5px;
-            box-sizing: border-box;
-        }
-
-        button {
-            background-color: #4CAF50;
-            color: white;
-            padding: 15px 20px;
-            border: none;
-            border-radius: 5px;
-            cursor: pointer;
-            width: 100%;
-        }
-
-        button:hover {
-            background-color: #45a049;
-        }
-
-        h1 {
-            text-align: center;
-            margin-bottom: 30px;
-        }
-    </style>
-</head>
-<body>
-    <h1>Edit Barang</h1>
-    <form action="" method="POST">
-        @csrf
-        @method('PATCH')
-        <label for="nama">Nama Barang:</label>
-        <input type="text" id="nama" name="nama" value="">
-
-        <label for="merek">Merek:</label>
-        <input type="text" id="merek" name="merek" value="">
-
-        <label for="harga">Harga:</label>
-        <input type="number" id="harga" name="harga" value="">
-
-        <label for="stok">Stok:</label>
-        <input type="number" id="stok" name="stok" value="">
-
-        <button type="submit">Simpan Perubahan</button>
-    </form>
+<html>
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link href="/style/tailwindcss3.4.1.js" rel="stylesheet" />
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link
+      rel="stylesheet"
+      href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.8.0/font/bootstrap-icons.css"
+    />
+    <title>Responsive Sidebar Using TailwindCSS</title>
+  </head>
+  <body class="bg-gray-100 h-screen flex items-center justify-center">
+    <div class="max-w-md w-full bg-white p-8 rounded-lg shadow-lg">
+        <h1 class="text-2xl font-semibold text-center mb-6">Edit Barang</h1>
+        <form action="" method="POST" class="space-y-6">
+            @csrf
+            @method('PATCH')
+            <div>
+                <label for="nama" class="block text-gray-700 font-bold mb-2">Nama Barang:</label>
+                <input type="text" id="nama" name="nama" class="w-full px-4 py-2 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500" value="">
+            </div>
+            <div>
+                <label for="merek" class="block text-gray-700 font-bold mb-2">Merek:</label>
+                <input type="text" id="merek" name="merek" class="w-full px-4 py-2 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500" value="">
+            </div>
+            <div>
+                <label for="harga" class="block text-gray-700 font-bold mb-2">Harga:</label>
+                <input type="number" id="harga" name="harga" class="w-full px-4 py-2 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500" value="">
+            </div>
+            <div>
+                <label for="stok" class="block text-gray-700 font-bold mb-2">Stok:</label>
+                <input type="number" id="stok" name="stok" class="w-full px-4 py-2 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500" value="">
+            </div>
+            <div>
+                <button type="submit" class="w-full bg-green-500 text-white px-4 py-2 rounded-lg hover:bg-green-600 focus:outline-none focus:ring-2 focus:ring-green-500">Simpan Perubahan</button>
+            </div>
+        </form>
+    </div>
 </body>
 </html>

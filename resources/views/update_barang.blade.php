@@ -1,78 +1,35 @@
 <!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Update Barang</title>
-    <style>
-        body {
-            font-family: Arial, sans-serif;
-            background-color: #f8f9fa;
-            color: #333;
-        }
-
-        .container {
-            max-width: 600px;
-            margin: 0 auto;
-            padding: 20px;
-            background-color: #fff;
-            border-radius: 8px;
-            box-shadow: 0 0 10px rgba(0,0,0,0.1);
-        }
-
-        h2 {
-            margin-top: 0;
-        }
-
-        label {
-            display: block;
-            margin-bottom: 5px;
-        }
-
-        input[type="text"], input[type="number"] {
-            width: 100%;
-            padding: 8px;
-            margin-bottom: 15px;
-            border: 1px solid #ccc;
-            border-radius: 4px;
-            box-sizing: border-box;
-        }
-
-        .button-container {
-            text-align: right;
-        }
-
-        button {
-            padding: 10px 20px;
-            background-color: #007bff;
-            color: #fff;
-            border: none;
-            border-radius: 4px;
-            cursor: pointer;
-        }
-
-        button:hover {
-            background-color: #0056b3;
-        }
-    </style>
-</head>
-<body>
-    <div class="container">
-        <h2>Update Barang</h2>
-        <form action="#" method="POST">
-            <label for="nama">Nama Barang:</label>
-            <input type="text" id="nama" name="nama" value="Nama Barang">
-
-            <label for="stok">Stok:</label>
-            <input type="number" id="stok" name="stok" value="100">
-
-            <label for="merek">Merek:</label>
-            <input type="text" id="merek" name="merek" value="Merek Barang">
-
+<html>
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link href="/style/tailwindcss3.4.1.js" rel="stylesheet" />
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link
+      rel="stylesheet"
+      href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.8.0/font/bootstrap-icons.css"
+    />
+    <title>Responsive Sidebar Using TailwindCSS</title>
+  </head>
+  <body class="bg-gray-100 h-screen flex items-center justify-center">
+    <div class="max-w-md w-full bg-white p-8 rounded-lg shadow-lg">
+        <h2 class="text-2xl mb-4">Update Barang</h2>
+        <form action="#" method="POST" class="space-y-4">
+            <div>
+                <label for="nama" class="block text-sm font-medium text-gray-700">Nama Barang:</label>
+                <input type="text" id="nama" name="nama" class="mt-1 p-2 block w-full border border-gray-300 rounded-md focus:outline-none focus:ring-blue-500 focus:border-blue-500" value="Nama Barang">
+            </div>
+            <div>
+                <label for="stok" class="block text-sm font-medium text-gray-700">Stok:</label>
+                <input type="number" id="stok" name="stok" class="mt-1 p-2 block w-full border border-gray-300 rounded-md focus:outline-none focus:ring-blue-500 focus:border-blue-500" value="100">
+            </div>
+            <div>
+                <label for="merek" class="block text-sm font-medium text-gray-700">Merek:</label>
+                <input type="text" id="merek" name="merek" class="mt-1 p-2 block w-full border border-gray-300 rounded-md focus:outline-none focus:ring-blue-500 focus:border-blue-500" value="Merek Barang">
+            </div>
             <!-- Tambahkan input untuk atribut lainnya sesuai kebutuhan -->
-
-            <div class="button-container">
-                <button type="submit">Simpan</button>
+            <div class="flex justify-end">
+                <button type="submit" class="bg-blue-500 text-white px-4 py-2 rounded-md hover:bg-blue-600 focus:outline-none focus:ring-2 focus:ring-blue-500">Simpan</button>
             </div>
         </form>
     </div>
