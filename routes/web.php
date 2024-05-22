@@ -23,7 +23,3 @@ route::get('dasbord_user',[dasbord_user::class,'halaman_dasbord_admin'])->name('
 route::get('/regis',function(){
     return view('regis');
 });
-
-route::get('/contoh', function (){
-    return view('tiwland');
-});
