@@ -91,7 +91,7 @@ body{
 .box form{
     position: absolute;
     inset: 4px;
-    background: #222;   
+    background: #222;
     padding: 50px 40px;
     border-radius: 4px;
     z-index: 2;
@@ -385,7 +385,7 @@ body{
     height: 320px;
     background: #1c1c1c;
     border-radius: 8px;
-    overflow: hidden;     
+    overflow: hidden;
 }
 .box2::before{
     content: '';

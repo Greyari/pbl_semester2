@@ -1,3 +1,0 @@
-<div>
-    daftar akun
-</div>

@@ -14,7 +14,6 @@
     <div class="box">
         <span class="borderLine"></span>
         <form action="{{ route('login.submit') }}" method="POST">
-            @csrf 
             <h2>Login</h2>
             <div class="inputBox">
                 <input type="text" name="username" required="required">

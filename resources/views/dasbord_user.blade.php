@@ -1,3 +1,3 @@
 <div>
-    dasbord bang aldo
+    dasbord
 </div>
