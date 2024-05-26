@@ -31,25 +31,25 @@
         <ul>
         
           <li class="mb-4">
-            <a href="/tambah-barang" class="flex items-center p-2 hover:bg-blue-600 rounded">
+            <a href="/admin/tambah" class="flex items-center p-2 hover:bg-blue-600 rounded">
               <svg class="w-6 h-6 mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 4v16m8-8H4"></path></svg>
               Menambahkan Barang
             </a>
           </li>
           <li class="mb-4">
-            <a href="/edit-barang" class="flex items-center p-2 hover:bg-blue-600 rounded">
+            <a href="/admin/edit" class="flex items-center p-2 hover:bg-blue-600 rounded">
               <svg class="w-6 h-6 mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 12H9m0 0H5m4 0h4m-4 0V8m0 4v4"></path></svg>
               Edit Barang
             </a>
           </li>
           <li class="mb-4">
-            <a href="/hapus-barang" class="flex items-center p-2 hover:bg-blue-600 rounded">
+            <a href="/admin/hapus" class="flex items-center p-2 hover:bg-blue-600 rounded">
               <svg class="w-6 h-6 mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M20 12H4"></path></svg>
               Hapus Barang
             </a>
           </li>
           <li class="mb-4">
-            <a href="/update-barang" class="flex items-center p-2 hover:bg-blue-600 rounded">
+            <a href="/admin/update" class="flex items-center p-2 hover:bg-blue-600 rounded">
               <svg class="w-6 h-6 mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 8c0-1.657 1.343-3 3-3s3 1.343 3 3-1.343 3-3 3-3-1.343-3-3zm0 4c2.761 0 5 2.239 5 5v4H7v-4c0-2.761 2.239-5 5-5z"></path></svg>
               Stok
             </a>

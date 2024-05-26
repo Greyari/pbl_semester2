@@ -9,7 +9,7 @@ use App\Http\Controllers\p5grey;
 use App\Http\Controllers\contoh;
 
 Route::get('/', function () {
-    return view('index');
+    return view('layout.index');
 });
 
 route::get('/login',[login::class,'Halaman_login'])->name('login');
@@ -23,3 +23,21 @@ route::get('dasbord_user',[dasbord_user::class,'halaman_dasbord_admin'])->name('
 route::get('/regis',function(){
     return view('regis');
 });
+
+route::get('/admin',function(){
+    return view('admin.dashboard_admin');
+});
+ route::get('/admin/edit',function(){
+    return view('admin.edit_barang');
+ });
+
+ route::get('/admin/tambah',function(){
+    return view('admin.tambah');
+ });
+ route::get('/admin/update',function(){
+    return view('admin.update_barang');
+ });
+
+ route::get('/admin/hapus',function(){
+    return view('admin.hapus_barang');
+ });
