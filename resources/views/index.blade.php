@@ -1,107 +1,175 @@
 <!DOCTYPE html>
-<html>
-  <head>
+<html lang="en">
+<head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <link href="/style/tailwindcss3.4.1.js" rel="stylesheet" />
-    <script src="https://cdn.tailwindcss.com"></script>
-    <link
-      rel="stylesheet"
-      href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.8.0/font/bootstrap-icons.css"
-    />
-    <title>Responsive Sidebar Using TailwindCSS</title>
-  </head>
-  <body class="bg-blue-600">
-    <span
-      class="absolute text-white text-4xl top-5 left-4 cursor-point
-      onclick="Open()"
-    >
-      <i class="bi bi-filter-left px-2 bg-gray-900 rounded-md"></i>
-    </span>
-    <div
-      class="sidebar fixed top-0 bottom-0 lg:left-0 left-[-300px] p-2 w-[300px] overflow-y-auto text-center bg-gray-900"
-    >
-      <div class="text-gray-100 text-xl">
-        <div class="p-2.5 mt-1 flex items-center">
-          <i class="bi bi-app-indicator px-2 py-1 rounded-md bg-blue-600"></i>
-          <h1 class="font-bold text-gray-200 text-[15px] ml-3">TailwindCSS</h1>
-          <i
-            class="bi bi-x cursor-pointer ml-28 lg:hidden"
-            onclick="Close()"
-          ></i>
+    <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.8.0/font/bootstrap-icons.css" />
+    <title>Indeks Keren dengan Tailwind CSS</title>
+    <style>
+        /* Custom styles for slider */
+        .slider-container {
+            position: relative;
+            width: 50%;
+            margin: auto;
+            overflow: hidden;
+        }
+        .slider {
+            display: flex;
+            transition: transform 0.5s ease-in-out;
+        }
+        .slider img {
+            min-width: 100%;
+            height: auto;
+        }
+        .slider-button {
+            position: absolute;
+            top: 50%;
+            transform: translateY(-50%);
+            background-color: rgba(0, 0, 0, 0.5);
+            color: white;
+            border: none;
+            padding: 0.5rem;
+            cursor: pointer;
+        }
+        .prev-button {
+            left: 0;
+        }
+        .next-button {
+            right: 0;
+        }
+    </style>
+</head>
+<body class="bg-gray-100">
+    <!-- Navbar Start -->
+    <nav class="fixed top-0 left-0 w-full bg-black bg-opacity-70 p-4 z-50">
+        <div class="container mx-auto flex items-center justify-between">
+            <div class="text-white font-bold text-xl cursor-default">
+                Sell<span class="text-red-600">Phone</span>
+            </div>
+            <div class="space-x-4">
+                <a href="#" class="text-white hover:text-black">Tentang Kami</a>
+                <a href="#" class="text-white hover:text-black">Kontak</a>
+                <a href="#" class="text-white hover:text-black">Login</a>
+            </div>
         </div>
-        <div class="my-2 bg-gray-600 h-[1px]"></div>
-      </div>
-      <div
-        class="p-2.5 flex items-center rounded-md px-4 duration-300 cursor-pointer bg-gray-700 text-white"
-      >
-        <i class="bi bi-search text-sm"></i>
-        <input
-          type="text"
-          placeholder="Search"
-          class="text-[15px] ml-4 w-full bg-transparent focus:outline-none"
-        />
-      </div>
-      <div
-        class="p-2.5 mt-3 flex items-center rounded-md px-4 duration-300 cursor-pointer hover:bg-blue-600 text-white"
-      >
-        <i class="bi bi-house-door-fill"></i>
-        <span class="text-[15px] ml-4 text-gray-200 font-bold">Home</span>
-      </div>
-      <div
-        class="p-2.5 mt-3 flex items-center rounded-md px-4 duration-300 cursor-pointer hover:bg-blue-600 text-white"
-      >
-        <i class="bi bi-bookmark-fill"></i>
-        <span class="text-[15px] ml-4 text-gray-200 font-bold">Bookmark</span>
-      </div>
-      <div class="my-4 bg-gray-600 h-[1px]"></div>
-      <div
-        class="p-2.5 mt-3 flex items-center rounded-md px-4 duration-300 cursor-pointer hover:bg-blue-600 text-white"
-        onclick="dropdown()"
-      >
-        <i class="bi bi-chat-left-text-fill"></i>
-        <div class="flex justify-between w-full items-center">
-          <span class="text-[15px] ml-4 text-gray-200 font-bold">Chatbox</span>
-          <span class="text-sm rotate-180" id="arrow">
-            <i class="bi bi-chevron-down"></i>
-          </span>
+    </nav>
+    <!-- Navbar End -->
+
+    <div class="pt-24">
+        <!-- Welcome Text Start -->
+        <p class="text-blue-600 text-center py-8 font-bold text-2xl">Welcome!</p>
+        <!-- Welcome Text End -->
+
+        <!-- Image Slider Start -->
+        <div class="slider-container">
+            <div class="slider">
+                <img src="/img/hp1.jpg" alt="Slide 1" class="rounded-lg">
+                <img src="/img/hp2.jpg" alt="Slide 2" class="rounded-lg">
+                <img src="/img/hp3.jpg" alt="Slide 3" class="rounded-lg">
+            </div>
+            <button class="slider-button prev-button" onclick="prevSlide()">&#10094;</button>
+            <button class="slider-button next-button" onclick="nextSlide()">&#10095;</button>
         </div>
-      </div>
-      <div
-        class="text-left text-sm mt-2 w-4/5 mx-auto text-gray-200 font-bold"
-        id="submenu"
-      >
-        <h1 class="cursor-pointer p-2 hover:bg-blue-600 rounded-md mt-1">
-          Social
-        </h1>
-        <h1 class="cursor-pointer p-2 hover:bg-blue-600 rounded-md mt-1">
-          Personal
-        </h1>
-        <h1 class="cursor-pointer p-2 hover:bg-blue-600 rounded-md mt-1">
-          Friends
-        </h1>
-      </div>
-      <div
-        class="p-2.5 mt-3 flex items-center rounded-md px-4 duration-300 cursor-pointer hover:bg-blue-600 text-white"
-      >
-        <i class="bi bi-box-arrow-in-right"></i>
-        <span class="text-[15px] ml-4 text-gray-200 font-bold">Logout</span>
-      </div>
+        <!-- Image Slider End -->
+
+        <!-- Categories Start -->
+        <div class="flex justify-center py-8">
+            <div class="flex flex-wrap gap-4">
+                <a href="#" class="bg-white hover:bg-sky-500 rounded-full px-6 py-2">SAMSUNG</a>
+                <a href="#" class="bg-white hover:bg-sky-500 rounded-full px-6 py-2">IPHONE</a>
+                <a href="#" class="bg-white hover:bg-sky-500 rounded-full px-6 py-2">XIAOMI</a>
+                <a href="#" class="bg-white hover:bg-sky-500 rounded-full px-6 py-2">HUAWEI</a>
+            </div>
+        </div>
+        <!-- Categories End -->
+
+        <!-- About Start -->
+        <div class="container mx-auto p-8 mt-16 bg-white rounded-md shadow-md flex flex-col md:flex-row">
+            <div class="md:w-1/2">
+                <h2 class="text-2xl font-bold text-center mb-11">About</h2>
+                <p class="text-gray-600">
+                    Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nulla nec dui
+                    vel ligula efficitur euismod. Proin ultricies dui vel augue aliquam,
+                    at dapibus sem cursus.
+                </p>
+            </div>
+            <!-- About Image -->
+            <div class="md:w-1/2 mt-4 md:mt-0 md:ml-4">
+                <img src="/img/logo.jpg" alt="About Image" class="w-full h-auto rounded-md">
+            </div>
+        </div>
+        <!-- About End -->
     </div>
 
-    <script type="text/javascript">
-      function dropdown() {
-        document.querySelector("#submenu").classList.toggle("hidden");
-        document.querySelector("#arrow").classList.toggle("rotate-0");
-      }
-      dropdown();
+    <!-- Footer Start -->
+    <footer class="bg-black text-white p-8 mt-14">
+        <div class="container mx-auto flex flex-col md:flex-row items-center justify-between">
+            <!-- Social Media -->
+            <div class="mb-4 md:mb-0">
+                <h3 class="text-xl font-bold mb-2">Sosial Media</h3>
+                <ul class="flex space-x-4">
+                    <li><a href="#" class="text-white hover:text-gray-400">Facebook</a></li>
+                    <li><a href="#" class="text-white hover:text-gray-400">Twitter</a></li>
+                    <li><a href="#" class="text-white hover:text-gray-400">Instagram</a></li>
+                </ul>
+            </div>
+            <!-- Contact -->
+            <div class="mb-4 md:mb-0">
+                <h3 class="text-xl font-bold mb-2">Kontak</h3>
+                <p>Email: info@example.com</p>
+                <p>Telepon: (123) 456-7890</p>
+            </div>
+            <!-- Address -->
+            <div>
+                <h3 class="text-xl font-bold mb-2">Alamat</h3>
+                <p>Jalan Contoh No. 123</p>
+                <p>Kota Contoh, 12345</p>
+                <p>Indonesia</p>
+            </div>
+        </div>
+    </footer>
+    <!-- Footer End -->
 
-      function Open() {
-        document.querySelector(".sidebar").classList.toggle("left-[-300px]");
-      }
-      function Close() {
-        document.querySelector(".sidebar").classList.toggle("left-[-300px]");
-      }
+    <script>
+        let currentSlide = 0;
+        const slides = document.querySelectorAll('.slider img');
+        let slideInterval = setInterval(nextSlide, 3000); // Change slide every 3 seconds
+
+        function showSlide(index) {
+            if (index >= slides.length) {
+                currentSlide = 0;
+            } else if (index < 0) {
+                currentSlide = slides.length - 1;
+            } else {
+                currentSlide = index;
+            }
+            const offset = -currentSlide * 100;
+            document.querySelector('.slider').style.transform = translateX(${offset}%);
+        }
+
+        function nextSlide() {
+            showSlide(currentSlide + 1);
+        }
+
+        function prevSlide() {
+            showSlide(currentSlide - 1);
+        }
+
+        // Reset interval when manual slide change occurs
+        document.querySelector('.prev-button').addEventListener('click', () => {
+            clearInterval(slideInterval);
+            prevSlide();
+            slideInterval = setInterval(nextSlide, 3000);
+        });
+
+        document.querySelector('.next-button').addEventListener('click', () => {
+            clearInterval(slideInterval);
+            nextSlide();
+            slideInterval = setInterval(nextSlide, 3000);
+        });
+
+        showSlide(currentSlide);
     </script>
-  </body>
+</body>
 </html>
