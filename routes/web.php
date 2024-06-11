@@ -8,7 +8,7 @@ use App\Http\Controllers\dasbord_user;
 use App\Http\Controllers\p5grey;
 
 Route::get('/', function () {
-    return view('index');
+    return view('layout.index');
 });
 
 // route::get('/login',[login::class,'Halaman_login']);
@@ -31,10 +31,22 @@ route::get('/admin',function(){
 
 // update
 
-use App\Http\Controllers\AdminController;
 
-Route::get('/admin', [AdminController::class, 'index'])->name('dashboard_admind');
-Route::get('/edit-barang', [AdminController::class, 'editBarang'])->name('edit-barang');
-Route::get('/tambah-barang', [AdminController::class, 'tambahBarang'])->name('tambah');
-Route::get('/hapus-barang', [AdminController::class, 'hapusBarang'])->name('hapus-barang');
-Route::get('/update-barang', [AdminController::class, 'updateBarang'])->name('update_barang');
+
+route::get('/admin',function(){
+    return view('admin.dashboard_admin');
+});
+ route::get('/admin/edit',function(){
+    return view('admin.edit_barang');
+ });
+
+ route::get('/admin/tambah',function(){
+    return view('admin.tambah');
+ });
+ route::get('/admin/update',function(){
+    return view('admin.update_barang');
+ });
+
+ route::get('/admin/hapus',function(){
+    return view('admin.hapus_barang');
+ });
