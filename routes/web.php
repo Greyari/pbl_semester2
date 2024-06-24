@@ -6,6 +6,7 @@ use App\Http\Controllers\login;
 use App\Http\Controllers\forget;
 use App\Http\Controllers\dasbord_user;
 use App\Http\Controllers\p5grey;
+use App\Http\Controllers\API\ProdukController;
 
 Route::get('/', function () {
     return view('layout.index');
@@ -29,7 +30,7 @@ route::get('/admin',function(){
 });
 
 
-// update
+// update rivaldo
 
 
 
@@ -50,3 +51,8 @@ route::get('/admin',function(){
  route::get('/admin/hapus',function(){
     return view('admin.hapus_barang');
  });
+
+
+// router rivaldo
+Route::patch('/produk/{id}', [ProdukController::class, 'update'])->name('update_produk ');
+Route::delete('/produk/{id}', [ProdukController::class, 'destroy'])->name('hapus_produk');
