@@ -11,6 +11,9 @@ class Produk extends Model
     protected $table = "produk";
     protected $fillable = ['nama', 'deskripsi', 'harga', 'stok', 'gambar'];
 
+    public function merek()
+    {
+        return $this->belongsTo(Merek::class, 'id_merek');
+    }
     public $timestamps = false;
 }
-    

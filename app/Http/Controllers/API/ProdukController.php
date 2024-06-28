@@ -10,12 +10,12 @@ use Illuminate\Support\Facades\Validator;
 class ProdukController extends Controller
 {
 
-    // MEREK
+    // PRODUK
     public function data_produk(){
-        $data = Produk::orderBy('nama', 'asc')->get();
+        $data = Produk::with('merek')->orderBy('id', 'asc')->get();
         return response()->json([
             'status'=>true,
-            'mesege'=>'Data ditemukan',
+            'message'=>'Data ditemukan',
             'data' =>$data
         ], 200);
     }
@@ -27,7 +27,6 @@ class ProdukController extends Controller
             'nama' => 'required|unique:produk,nama',
             'id_merek' => 'required|exists:merek,id',
             'deskripsi' => 'required',
-            'harga' => 'required|numeric',
             'stok' => 'required|integer',
             'gambar' => 'required|image|mimes:jpeg,png,jpg,gif|max:2048',
         ];
@@ -39,7 +38,7 @@ class ProdukController extends Controller
                 'status' => false,
                 'message' => 'Poduk tidak bisa di tambahkan',
                 'errors' => $validator->errors()
-            ], 422);
+            ]);
         }
 
         if ($request->hasFile('gambar')) {
@@ -49,7 +48,7 @@ class ProdukController extends Controller
             return response()->json([
                 'status' => false,
                 'message' => 'Gambar tidak ditemukan'
-            ], 422);
+            ]);
         }
 
         $produk = new Produk();
@@ -69,8 +68,7 @@ class ProdukController extends Controller
         ], 201);
     }
 
-    // UPDATE
-    public function update_produk(Request $request, string $id)
+    public function update_produk_id(Request $request, string $id)
     {
         $produk = Produk::find($id);
         if (empty($produk)) {
@@ -86,23 +84,23 @@ class ProdukController extends Controller
             'deskripsi' => 'required',
             'harga' => 'required|numeric',
             'stok' => 'required|integer',
-            'gambar' => 'nullable|image|mimes:jpeg,png,jpg,gif|max:2048',
+            'gambar' => 'nullable|image|mimes:jpeg,png,jpg,gif|max:2048'
         ];
 
         $validator = Validator::make($request->all(), $rules);
         if ($validator->fails()) {
             return response()->json([
-                'status' => false,
-                'message' => 'Tidak dapat memperbaruhi merek',
+                'status' => true,
+                'message' => 'Berhasil Memperbaruhi Produk',
                 'data' => $validator->errors()
-            ], 404);
+            ], 201);
         }
 
         if ($request->hasFile('gambar')) {
             $file = $request->file('gambar');
             $path = $file->store('images', 'public');
 
-            if($produk->gambar) {
+            if ($produk->gambar) {
                 Storage::disk('public')->delete($produk->gambar);
             }
 
@@ -124,6 +122,8 @@ class ProdukController extends Controller
         ], 200);
     }
 
+
+
     // HAPUS
     public function hapus_produk(string $id)
     {
@@ -142,5 +142,22 @@ class ProdukController extends Controller
             'status' => true,
             'message' => 'Sukses menghapus produk',
         ], 200);
+    }
+
+    public function show (string $id)
+    {
+        $data = Produk::find($id);
+        if ($data) {
+            return response()->json([
+                'status' => true,
+                'message' => 'Produk ditemukan',
+                'data' => $data
+            ],200);
+        }else {
+            return response()->json([
+                'status' => false,
+                'message' => 'Produk tidak ditemukan'
+            ], 404);
+        }
     }
 }

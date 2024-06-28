@@ -24,17 +24,14 @@ Route::controller(PembeliController::class)->group(function(){
     Route::post('forget', 'forget');
 });
 
-
 // ADMIN
 Route::controller(AdminController::class)->group(function(){
-    Route::post('login_admin', 'login_admin');
-    Route::post('logout_admin', 'logout_admin');
+    Route::post('login_admin', 'login')->name('login_admin');
+    Route::post('logout_admin', 'logout');
 });
-
-Route::get('merek',[MerekController::class, 'data_merek'])->middleware('auth:sanctum');
-
 // MEREK
 Route::controller(MerekController::class)->group(function(){
+    Route::get('merek', 'data_merek');
     Route::post('tambah_merek', 'tambah_merek');
     Route::put('update_merek/{id}', 'update_merek');
     Route::delete('hapus_merek/{id}', 'hapus_merek');
@@ -43,9 +40,9 @@ Route::controller(MerekController::class)->group(function(){
 
 // PRODUK
 Route::controller(ProdukController::class)->group(function(){
-    Route::get('produk', 'data_produk')->name('login');
+    Route::get('produk', 'data_produk');
     Route::post('tambah_produk', 'tambah_produk');
-    Route::put('update_produk/{id}', 'update_produk');
+    Route::put('update_produk/{id}', 'update_produk_id');
     Route::delete('hapus_produk/{id}', 'hapus_produk');
 });
 

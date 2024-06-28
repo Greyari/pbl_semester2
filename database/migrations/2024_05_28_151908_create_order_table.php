@@ -15,12 +15,10 @@ return new class extends Migration
             $table->id('id');
             $table->unsignedBigInteger('id_produk');
             $table->unsignedBigInteger('id_pembeli');
-            $table->unsignedBigInteger('id_admin');
             $table->string('total');
 
             $table->foreign('id_produk')->references('id')->on('produk');
             $table->foreign('id_pembeli')->references('id')->on('pembeli');
-            $table->foreign('id_admin')->references('id')->on('admin');
         });
     }
 

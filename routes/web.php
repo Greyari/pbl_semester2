@@ -1,58 +1,26 @@
 <?php
 
-use App\Http\Controllers\Controller;
+use App\Http\Controllers\Admin\AdminController;
+use App\Http\Controllers\Admin\ProdukController;
+use App\Http\Controllers\Admin\MerekController;
 use Illuminate\Support\Facades\Route;
-use App\Http\Controllers\login;
-use App\Http\Controllers\forget;
-use App\Http\Controllers\dasbord_user;
-use App\Http\Controllers\p5grey;
-use App\Http\Controllers\API\ProdukController;
-
-Route::get('/', function () {
-    return view('layout.index');
-});
-
-// route::get('/login',[login::class,'Halaman_login']);
-
-// route::post('/login', [login::class, 'processLogin'])->name('login.submit');
-
-// route::get('/forget', [forget::class, 'tampil_laman']);
-
-// route::get('dasbord_user',[dasbord_user::class,'halaman_dasbord_admin'])->name('dasboard_user');
-
-route::get('/regis',function(){
-    return view('regis');
-});
-
-// route admind
-route::get('/admin',function(){
-    return view('dashboard_admin');
-});
 
 
-// update rivaldo
+// PRODUK
+Route::get('produk', [ProdukController::class, 'index'])->name('index_produk');
+Route::post('produk', [ProdukController::class, 'tambah_produk']);
+Route::put('/admin/produk/{id}', [ProdukController::class, 'update']);
+Route::delete('/produk/{id}', [ProdukController::class, 'delete'])->name('produk.delete');
+
+// MEREK
+Route::get('/merek', [MerekController::class, 'data_merek'])->name('index_merek');
+Route::post('merek', [MerekController::class, 'tambah_merek'])->name('merek.store');
+Route::put('/admin/merek/{id}', [MerekController::class, 'update']);
+Route::delete('/merek/{id}', [MerekController::class, 'delete'])->name('merek.delete');
+
+// ADMIN
+
+    Route::get('/login', [AdminController::class, 'LoginForm'])->name('admin.login');
+    Route::post('/login', [AdminController::class, 'login'])->name('admin.login.submit');
 
 
-
-route::get('/admin',function(){
-    return view('admin.dashboard_admin');
-});
- route::get('/admin/edit',function(){
-    return view('admin.edit_barang');
- });
-
- route::get('/admin/tambah',function(){
-    return view('admin.tambah');
- });
- route::get('/admin/update',function(){
-    return view('admin.update_barang');
- });
-
- route::get('/admin/hapus',function(){
-    return view('admin.hapus_barang');
- });
-
-
-// router rivaldo
-Route::patch('/produk/{id}', [ProdukController::class, 'update'])->name('update_produk ');
-Route::delete('/produk/{id}', [ProdukController::class, 'destroy'])->name('hapus_produk');

@@ -13,12 +13,12 @@ return new class extends Migration
     {
         Schema::create('produk', function (Blueprint $table) {
             $table->id('id');
-            $table->unsignedBigInteger('id_merek');
-            $table->string('nama');
-            $table->text('deskripsi');
-            $table->decimal('harga', 8, 2);
+            $table->unsignedBigInteger('id_merek')->nullable();
+            $table->string('nama')->nullable();
+            $table->text('deskripsi')->nullable();
+            $table->decimal('harga', 8, 2)->nullable();
             $table->integer('stok')->nullable();
-            $table->string('gambar');
+            $table->string('gambar')->nullable();
 
             $table->foreign('id_merek')->references('id')->on('merek');
         });
