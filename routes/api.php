@@ -26,8 +26,9 @@ Route::controller(PembeliController::class)->group(function(){
 
 // ADMIN
 Route::controller(AdminController::class)->group(function(){
-    Route::post('login_admin', 'login')->name('login_admin');
-    Route::post('logout_admin', 'logout');
+    Route::post('login_admin', 'login');
+    Route::post('logout_admin', 'logout_admin');
+    Route::post('/register_admin', 'register')->name('api.admin.register');
 });
 // MEREK
 Route::controller(MerekController::class)->group(function(){
@@ -36,8 +37,6 @@ Route::controller(MerekController::class)->group(function(){
     Route::put('update_merek/{id}', 'update_merek');
     Route::delete('hapus_merek/{id}', 'hapus_merek');
 });
-
-
 // PRODUK
 Route::controller(ProdukController::class)->group(function(){
     Route::get('produk', 'data_produk');

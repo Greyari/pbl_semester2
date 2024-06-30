@@ -8,14 +8,19 @@
     <title>Admin</title>
 </head>
 <body class="h-screen bg-white flex flex-col">
+    
     <!-- Navbar -->
     <header class="shadow-lg py-4 px-6 flex justify-between items-center bg-gray-900 shadow">
         <div class="flex items-center">
             <h1 class="text-2xl text-white font-extrabold">Admin Dashboard</h1>
         </div>
         <div class="flex items-center space-x-4">
+
             <a href="#" class="text-white hover:text-blue-500">Settings</a>
-            <button class="bg-blue-500 text-white px-4 py-2 rounded">Log Out</button>
+            <form action="{{ route('admin.logout') }}" method="POST" class="inline">
+                @csrf
+                <button type="submit" class="bg-blue-500 text-white px-4 py-2 rounded">Log Out</button>
+            </form>
         </div>
     </header>
 

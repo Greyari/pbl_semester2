@@ -3,12 +3,15 @@
 namespace App\Http\Controllers\Admin;
 
 use App\Http\Controllers\Controller;
+use App\Models\Admin;
+use Illuminate\Auth\Events\Registered;
 use Illuminate\Http\Request;
 use GuzzleHttp\Client;
+use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\Session;
 
 class AdminController extends Controller
 {
-    
     public function LoginForm()
     {
         return view('admin.login');
@@ -16,40 +19,56 @@ class AdminController extends Controller
 
     public function login(Request $request)
     {
-        // Ambil email dan nomor hp dari input request
         $email = $request->input('email');
         $no_hp = $request->input('no_hp');
 
-        // Buat instansiasi dari Guzzle Client
-        $client = new Client;
+        // Cek apakah admin dengan email dan no_hp ditemukan
+        $admin = Admin::where('email', $email)
+                      ->where('no_hp', $no_hp)
+                      ->first();
 
-        // URL untuk endpoint login_admin di API
-        $url = "http://localhost:8000/api/login_admin";
+        if ($admin) {
+            if ($admin->email_verified_at == null) {
+                return redirect()->route('verification.notice');
+            }
 
-        try {
-            // Lakukan request POST ke endpoint dengan mengirimkan data email dan no_hp
-            $response = $client->request('POST', $url, [
-                'form_params' => [
-                    'email' => $email,
-                    'no_hp' => $no_hp,
-                ]
-            ]);
+            // Autentikasi admin tanpa password
+            Auth::guard('admin')->login($admin);
 
-            // Ambil konten dari respons
-            $content = $response->getBody()->getContents();
-
-            // Decode konten JSON menjadi array asosiatif
-            $contentArray = json_decode($content, true);
-
-            // Ambil data yang diperlukan dari respons
-            $data = $contentArray['data'];
-
-            // Kirimkan data ke view admin.login
-            return redirect()->to('merek')->with('success', 'Selamat Datang Admin!');
-
-        } catch (\Exception $e) {
-            // Tangani exception jika terjadi kesalahan dalam melakukan request ke API
-            return redirect()->back()->withErrors(['error' => 'Failed to login. Please try again.']);
+            return redirect()->route('index_produk')->with('success', 'Selamat Datang Admin!');
         }
+
+        return redirect()->back()->withErrors(['error' => 'Login gagal. Silakan coba lagi.']);
+    }
+
+
+    public function register(Request $request)
+    {
+        // Validasi input
+        $validatedData = $request->validate([
+            'email' => 'required|email|unique:admin,email',
+            'no_hp' => 'required|unique:admin,no_hp',
+        ]);
+
+        // Buat admin baru
+        $admin = Admin::create([
+            'email' => $request->email,
+            'no_hp' => $request->no_hp
+        ]);
+
+        event(new Registered($admin));
+
+        Auth::guard('admin')->login($admin);
+
+        return redirect('/email/verify');
+    }
+
+    public function logout(Request $request)
+    {
+        Auth::guard('admin')->logout();
+        $request->session()->invalidate();
+        $request->session()->regenerateToken();
+
+        return redirect()->route('admin.login');
     }
 }

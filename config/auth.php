@@ -13,14 +13,10 @@
         |
         */
         'defaults' => [
-            'guard' => 'web',
+            'guard' => 'users',
             'passwords' => 'users',
         ],
 
-        'defaults1' => [
-            'guard' => 'web',
-            'passwords' => 'pembeli',
-        ],
 
         /*
         |--------------------------------------------------------------------------
@@ -42,7 +38,7 @@
         'guards' => [
             'web' => [
                 'driver' => 'session',
-                'provider' => 'users',
+                'provider' => 'admin',
             ],
 
             'api' => [
@@ -60,6 +56,11 @@
             'admin' => [
                 'driver' => 'session',
                 'provider' => 'admin',
+            ],
+            
+            'users' => [
+                'driver' => 'session',
+                'provider' => 'users',
             ],
         ],
 
@@ -123,6 +124,13 @@
                 'expire' => 60,
                 'throttle' => 60,
             ],
+        ],
+
+        'admin' => [
+            'provider' => 'admin',
+            'table' => 'password_resets',
+            'expire' => 60,
+            'throttle' => 60,
         ],
 
         /*

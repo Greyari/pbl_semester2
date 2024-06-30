@@ -15,6 +15,7 @@ return new class extends Migration
             $table->id('id');
             $table->string('email')->unique();
             $table->string('no_hp')->unique();
+            $table->timestamp('email_verified_at')->nullable();
             $table->softDeletes();
         });
     }

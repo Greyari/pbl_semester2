@@ -11,7 +11,7 @@ use Illuminate\Support\Facades\Auth;
 
 class AdminController extends Controller
 {
-    public function login_admin(Request $request): JsonResponse
+    public function login(Request $request): JsonResponse
     {
         $validator = Validator::make($request->all(), [
             'email' => 'required|email',
@@ -29,7 +29,7 @@ class AdminController extends Controller
         $admin = Admin::where('email', $request->email)->first();
 
         if ($admin && $admin->no_hp === $request->no_hp) {
-            $token['token'] = $admin->createToken('auth_token')->plainTextToken;
+            $token = $admin->createToken('auth_token')->plainTextToken;
 
             return response()->json([
                 'status' => true,
@@ -47,14 +47,44 @@ class AdminController extends Controller
             ], 401);
         }
     }
+    public function register(Request $request)
+    {
+        // Validasi input
+        $validator = Validator::make($request->all(), [
+            'email' => 'required|email|unique:admin,email',
+            'no_hp' => 'required|unique:admin,no_hp',
+        ]);
+
+        if ($validator->fails()) {
+            return response()->json([
+                'status' => false,
+                'message' => 'Registrasi gagal',
+                'data' => $validator->errors()
+            ], 400);
+        }
+
+        // Buat admin baru
+        $admin = new Admin();
+        $admin->email = $request->email;
+        $admin->no_hp = $request->no_hp;
+        $admin->save();
+
+        $admin->sendEmailVerificationNotification();
+
+        return response()->json([
+            'status' => true,
+            'message' => 'Registrasi berhasil',
+            'data' => $admin,
+        ], 201);
+    }
 
     public function logout_admin(Request $request): JsonResponse
     {
-        // Mendapatkan user yang sedang login menggunakan guard 'api'
-        $user = Auth::guard('admin')->user();
+        // Mendapatkan user yang sedang login menggunakan guard 'sanctum'
+        $user = $request->user();
         if ($user) {
             // Cabut token yang sedang digunakan
-            $user->tokens()->where('id', $user->currentAccessToken()->id)->delete();
+            $user->currentAccessToken()->delete();
 
             return response()->json([
                 'status' => true,
@@ -67,5 +97,4 @@ class AdminController extends Controller
             ], 401);
         }
     }
-
 }
